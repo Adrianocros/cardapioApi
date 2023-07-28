@@ -201,10 +201,8 @@ a.navbar-brand{
 
 }
 
-/*VERIFICAR ISSO CASO DE ERRO NO RESPONSIVO*/
 .container-menu{
     margin-bottom: 40px;
-    left: 120px;
 }
 
 .card-icon{
@@ -455,4 +453,27 @@ font-size: 24px;
 
 .reserva .img-banner img{
     width: 100%;
+}
+
+footer{
+    background-color: var(--color-secondary)!important;
+}
+
+.logo-footer{
+    width: 150px;
+}
+
+.container-logo-footer, .contaier-texto-footer, .contaier-redes-footer{
+    display: flex;
+    align-items: center;
+}
+
+.container-logo-footer{
+justify-content: start;
+}
+.contaier-texto-footer{
+    justify-content: center;
+}
+ .contaier-redes-footer{
+    justify-content: end;
 }
