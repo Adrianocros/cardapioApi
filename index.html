@@ -333,7 +333,7 @@
             </a>
             <div class="etapas">
                 <div class="etapa etapa1 active">1</div>
-                <div class="etapa etapa2 active">2</div>
+                <div class="etapa etapa2">2</div>
                 <div class="etapa etapa3">3</div>
             </div>
             <p class="title-carrinho mt-4">
@@ -344,6 +344,7 @@
 
     <div class="m-body">
         <div class="container">
+
             <div id="itensCarrinho" class="row mr-0 ml-0 hidden" >
                 
                 <div class="col-12 item-carrinho">
@@ -442,7 +443,7 @@
                 </div>
             </div><!--localEntrega-->
 
-            <div id="resumoCarrinho " class="row mr-0 ml-0"  >
+            <div id="resumoCarrinho " class="row mr-0 ml-0 hidden"  >
                 <div class="col-12">
                     <p class="title-carrinho mt-4">
                         <b>Itens do pedido</b>
@@ -486,6 +487,7 @@
                 </div>
                 
             </div><!--resumoCarrinho-->
+
         </div><!--container-m-body-->
     </div><!--modal-body-->
 
@@ -505,10 +507,10 @@
                     <span class="valor-total" id="lblValorTotal"><b>R$ 100,00</b></span>
                 </p>
             </div>
-            <a class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
-            <a class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar Pedido</a>
-            <a class="btn btn-yellow float-right hidden" id="btnEtapaEnviar">Enviar Pedido</a>
-            <a class="btn btn-white float-right mr-3 hidden " id="btnVoltar">Voltar</a>
+            <a onclick="cardapio.metodos.carregarEtapa(2)" class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
+            <a onclick="cardapio.metodos.carregarEtapa(3)" class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar Pedido</a>
+            <a  class="btn btn-yellow float-right hidden" id="btnEtapaResumo">Enviar Pedido</a>
+            <a onclick="cardapio.metodos.voltarEtapa()" class="btn btn-white float-right mr-3 hidden " id="btnVoltar">Voltar</a>
         </div><!--container-m-footer-->
     </div><!--modal-footer-->
 </div>
