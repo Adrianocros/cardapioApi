@@ -608,12 +608,13 @@ justify-content: start;
 .btn-remove{
     border: 2px solid var(--color-red);
     font-size: 16px;
-    padding: 4px 10px;
+    padding: 17px 17px;
     border-radius: 10px;
     color: var(--color-white);
     background-color: var(--color-red);
-    margin-left: 15px;
+    margin-left: 10px;
 }
+
 
 .container-total{
     padding-top: 20px;
@@ -770,4 +771,27 @@ color: var(--color-black);
 
 .toast.green{
     background-color: var(--color-green);
+}
+
+.carrinho-vazio{
+    margin: o auto;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
+
+}
+
+.carrinho-vazio i{
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    font-size: 50px;
+
 }
