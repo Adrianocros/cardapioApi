@@ -7,6 +7,7 @@ var MEU_CARRINHO = [];
 var VALOR_CARRINHO = 0;
 var VALOR_ENTREGA = 5;
 var MEU_ENDERECO = null;
+var CELULAR_EMPRESA = '5511984559092'
 
 cardapio.eventos = {
     init:() => {
@@ -417,9 +418,45 @@ cardapio.metodos = {
         })
 
         $("#resumoEndereco").html(`${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero},${MEU_ENDERECO.bairro}`)
-        $("#cidadeEndereco").html(`${MEU_ENDERECO.cidade},${MEU_ENDERECO.uf},${MEU_ENDERECO.complemento} / ${MEU_ENDERECO.cep}`);
+        $("#cidadeEndereco").html(`${MEU_ENDERECO.cidade},${MEU_ENDERECO.uf},${MEU_ENDERECO.complemento} - ${MEU_ENDERECO.cep}`);
+
+        cardapio.metodos.finalizarPedido();
     },
 
+
+
+    //Carrega o botão do whatsapp
+    finalizarPedido:() =>{
+        if(MEU_CARRINHO.length > 0 && MEU_CARRINHO != null){
+
+            var texto = 'Olá gostaria de fazer um pedido: ';
+            texto += `\n*Itens do pedido:*\n\n\${itens}`
+            texto += '\n*Endereço de entrega:*';
+            texto += `\n${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero},${MEU_ENDERECO.bairro}`;
+            texto += `\n${MEU_ENDERECO.cidade}, ${MEU_ENDERECO.uf}, ${MEU_ENDERECO.complemento} - ${MEU_ENDERECO.cep}`;
+            texto += `\n\n*Total (com entrega): R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.',',')}*`;
+            
+            var itens = '';
+
+            $.each(MEU_CARRINHO,(i,e) =>{
+                itens += `*${e.qntd}x* ${e.name}....... R$${e.price.toFixed(2).replace('.',',')} \n`;
+
+                //Ultimo item
+                if((i + 1)== MEU_CARRINHO.length){
+                        texto = texto.replace(/\${itens}/g, itens);
+                }
+
+                //Converte a URL para enviar para whatsapp
+                let encode = encodeURI(texto);
+                let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`
+
+                $("#btnEtapaResumo").attr('href', URL)
+
+            })
+        
+        }
+
+    },
 
 
     //Tamplete de mensagem
