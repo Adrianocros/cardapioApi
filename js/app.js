@@ -426,6 +426,7 @@ cardapio.metodos = {
         cardapio.metodos.finalizarPedido();
     },
 
+    
 
 
     //Carrega o botão do whatsapp
@@ -454,13 +455,10 @@ cardapio.metodos = {
                 let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`
 
                 $("#btnEtapaResumo").attr('href', URL)
-
+                const pedido = new Pedido();
             })
-        
         }
-
     },
-
 
     //Carrega o link do botão reserva
     carregarBotaoReserva: () =>{
@@ -505,6 +503,10 @@ cardapio.metodos = {
     carregarBotaoLigar:()=>{
         $('btnLigar').attr('href',`tel:${CELULAR_EMPRESA}`)
     },
+
+   
+
+
     
     //Tamplete de mensagem
     mensagem: (texto, cor = 'red', tempo = 3500) =>{
@@ -564,7 +566,7 @@ cardapio.templates = {
         <span class="btn-menos" onclick="cardapio.metodos.dinimuirQuantidadeCarrinho('\${id}')"><i class="fa fa-minus"></i></span>
         <span class="add-numero-itens" id="qntd-carrinho-\${id}">\${qntd}</span>
         <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidadeCarrinho('\${id}')"><i class="fa fa-plus"></i></span>
-        <span class="btn btn-remove"  onclick="cardapio.metodos.removerItemCarrinho('\${id}'>></span>
+        <span class="btn btn-remove"  onclick="cardapio.metodos.removerItemCarrinho('\${id')"}></span>
     </div>
 </div><!--item-carrinho-->
 `,
