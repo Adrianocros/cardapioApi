@@ -12,6 +12,9 @@ var CELULAR_EMPRESA = '5511984559092'
 cardapio.eventos = {
     init:() => {
        cardapio.metodos.obterItensCardapio();
+       cardapio.metodos.carregarBotaoReserva();
+       cardapio.metodos.carregarBotaoLigar();
+       cardapio.metodos.carregaWhatsappConverda();
     }
 }
 
@@ -459,13 +462,58 @@ cardapio.metodos = {
     },
 
 
+    //Carrega o link do botão reserva
+    carregarBotaoReserva: () =>{
+        var texto = "Olá, Gostaria de fazer uma *reserva*"
+
+        let encode = encodeURI(texto);
+        let URL =`https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
+
+        $('#btnReserva').attr('href',URL)
+    },
+
+    //abre o whatsapp para converssar
+    carregaWhatsappConverda:() =>{
+        var texto = "Olá, gostaria de conhecer o restaurante."
+
+        let encode = encodeURI(texto);
+        let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
+        
+        $('#abrirWhatsapp').attr('href',URL)
+
+    },
+
+
+
+    abrirDepoimento:(depoimento)=>{
+        $("#depoimento-1").addClass('hidden');
+        $("#depoimento-2").addClass('hidden');
+        $("#depoimento-3").addClass('hidden');
+
+        $("#btnDepoimento-1").removeClass('active');
+        $("#btnDepoimento-2").removeClass('active');
+        $("#btnDepoimento-3").removeClass('active');
+
+        $("#depoimento-" + depoimento).removeClass('hidden');
+        $("#btnDepoimento-" + depoimento).addClass('active');
+
+
+    },
+
+
+        
+    carregarBotaoLigar:()=>{
+        $('btnLigar').attr('href',`tel:${CELULAR_EMPRESA}`)
+    },
+    
     //Tamplete de mensagem
     mensagem: (texto, cor = 'red', tempo = 3500) =>{
 
         let id = Math.floor(Date.now() * Math.random()).toString();//Criando ID que nao se repita e aleatorio
         
-        let msg = `<div id="msg-${id}" class="animated fadeInDown toast ${cor}">${texto}</div>`;
-
+        let msg = `<div id="msg-${id}" class="animated bounceInDown toast ${cor}">${texto}</div>`;
+        
+    
         $("#container-mensagens").append(msg);
 
         //removendo a mensagem
@@ -483,7 +531,7 @@ cardapio.metodos = {
 
 cardapio.templates = {
     item:`
-    <div class="col-3 mb-5">
+    <div class="col-3 mb-5 animated fadeInUp">
         <div class="card card-item" id="\${id}">
             <div class="img-produto">
                 <img src="\${img}">
