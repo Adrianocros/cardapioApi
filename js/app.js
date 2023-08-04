@@ -424,6 +424,8 @@ cardapio.metodos = {
         $("#cidadeEndereco").html(`${MEU_ENDERECO.cidade},${MEU_ENDERECO.uf},${MEU_ENDERECO.complemento} - ${MEU_ENDERECO.cep}`);
 
         cardapio.metodos.finalizarPedido();
+       cardapio.metodos.mensagem('Apos clicar em Enviar pedido o WhatsApp será aberto. ','green')
+    
     },
 
     
@@ -454,11 +456,19 @@ cardapio.metodos = {
                 let encode = encodeURI(texto);
                 let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`
 
-                $("#btnEtapaResumo").attr('href', URL)
-                const pedido = new Pedido();
+                
+                $("#btnEtapaResumo").on('click', function() {
+                    window.open(URL, '_blank');
+                    cardapio.metodos.mensagem('Finalize o pedido pelo WhatsApp','green');
+                    setTimeout(()=>{
+                        location.reload(); // Recarrega a página quando o botão é clicado
+                    },9000)
+                });
+                
             })
         }
     },
+
 
     //Carrega o link do botão reserva
     carregarBotaoReserva: () =>{
@@ -527,7 +537,7 @@ cardapio.metodos = {
           },800)
         },tempo)
 
-    }
+    },
 
 }
 
